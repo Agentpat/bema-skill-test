@@ -6,6 +6,7 @@
 Thumbs.db
 
 # Logs
+# Logs and databases
 logs
 *.log
 npm-debug.log*
