@@ -1,113 +1,124 @@
-##  wp-next-mern-alternative
-
-A modern MERN-stack implementation of the Bema Integrated Services WordPress + Next.js Developer Test. This project showcases the ability to build a scalable headless CMS experience using React, Express, Node.js, and MongoDB — replacing WordPress with a custom backend and frontend stack.
 
 
-### Project Structure
+# wp-next-mern-alternative
 
-```
-wp-next-mern-alternative/
-├── client/          # React frontend
-├── server/          # Express backend
-├── .gitignore
-├── README.md
-```
+A modern MERN-stack implementation of the Bema Integrated Services WordPress + Next.js Developer Test.
+This project replaces WordPress with a custom REST API backend (Express + MongoDB) and React frontend, showcasing a scalable headless CMS solution.
 
 
 
-###  Setup & Run Instructions
+## Live Demo
 
-#### 1. Clone the Repository
+[https://client-lime-one-35.vercel.app/](https://client-lime-one-35.vercel.app/)
+
+---
+
+## Project Structure
+
+| Repo                                                            | Description                                                                             |
+| --------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [Client (Frontend)](https://github.com/Agentpat/client)         | React app consuming backend APIs                                                        |
+| [Server (Backend)](https://github.com/Agentpat/bema-skill-test) | Express API with MongoDB, handling blog posts, exchange rates, and custom name reversal |
+
+
+
+## Setup & Run Instructions
+
+### 1. Clone the repos
 
 ```bash
-git clone https://github.com/your-username/wp-next-mern-alternative.git
+git clone https://github.com/Agentpat/client.git
+git clone https://github.com/Agentpat/bema-skill-test.git
+```
+
+### 2. Backend Setup
+
+```bash
 cd bema-skill-test
-```
-
-#### 2. Setup the Backend (server)
-
-```bash
-cd server
 npm install
-cp .env.example .env   # Add your MongoDB URI and API keys
-npm run dev
+cp .env.example .env    # Add your MongoDB URI and any API keys here
+npm run dev             # Start the backend server (default port: 5000)
 ```
 
-> The server runs at `http://localhost:5000`
-
-#### 3. Setup the Frontend (client)
+### 3. Frontend Setup
 
 ```bash
 cd ../client
 npm install
-npm start
+npm start               # Runs frontend at http://localhost:3000
 ```
 
-> The frontend runs at `http://localhost:3000`
+---
+
+## Features Implemented (Test Breakdown)
+
+### Part 0 – CMS & Content Setup
+
+* MongoDB-backed blog schema replacing WordPress posts
+* CRUD support: Create, Read, Update, Delete blog posts
+
+### Part 1 – Headless Blog API
+
+* Custom REST API for posts (`/api/posts`) replaces GraphQL
+* Frontend fetches and displays recent blog post titles
+
+### Part 2 – REST API: NGN to USD Exchange Rate
+
+* Fetches live NGN→USD exchange rate from [exchange-rate.host](https://exchange-rate.host)
+* React component displays current rate with error handling
+
+### Part 3 – Plugin Setting Retrieval Replacement
+
+* Custom endpoint `/api/settings` replaces WordPress EDD plugin settings
+* Displays store currency setting on frontend
+
+### Part 4 (Bonus) – Custom Name Submission & Reversal
+
+* POST `/api/name` accepts a name and stores its reversed form
+* GET `/api/name` retrieves the reversed name
+* Frontend form to submit and display reversed names
 
 ---
 
-###  Features Implemented (Test Breakdown)
+## Technologies Used
 
-####  **Part 0 – CMS & Content Setup**
-
-* Replaced WordPress with a MongoDB-based content model (Blog schema)
-* Blog post creation, listing, editing, and deletion supported
-
-####  **Part 1 – Headless Blog via GraphQL (replaced)**
-
-* Implemented custom REST API for blog post retrieval instead of GraphQL
-* Blog post titles retrieved from `/api/posts` and displayed on homepage
-
-####  **Part 2 – REST API: NGN to USD Exchange Rate**
-
-* Used `exchange-rate.host` API via Axios in React
-* Created `ExchangeRate.js` component to fetch and display NGN→USD rate
-
-####  **Part 3 – REST API: Plugin Setting Retrieval**
-
-* Replaced EDD plugin with a custom backend endpoint `/api/settings`
-* Displays setting like: `Store Currency: NGN`
-
-####  **Part 4 (Bonus) – Custom Name Submission & Reversal**
-
-* Created POST `/api/name` to submit a name
-* Created GET `/api/name` to retrieve reversed name
-* Displayed reversed name on frontend
+**Frontend:** React, Axios, React Router DOM, (optionally TailwindCSS)
+**Backend:** Node.js, Express, Mongoose, dotenv, cors, nodemon
 
 ---
 
-###  Dependencies
+## Known Issues & Assumptions
 
-#### Frontend (React)
-
-* React, Axios, React Router DOM
-* TailwindCSS (optional styling)
-
-#### Backend (Node + Express)
-
-* Express, Mongoose
-* dotenv, cors, nodemon
+* MongoDB must be running locally or use a MongoDB Atlas URI
+* Valid API key required for exchange rate API calls
+* No authentication or rate limiting in this demo implementation
+* CORS properly configured for client-server communication
 
 ---
 
-###  Known Issues / Assumptions
+## Learnings & Highlights
 
-* MongoDB must be running locally or accessible via Atlas
-* RapidAPI key for currency conversion must be valid
-* In a real production system, auth and rate limiting would be enforced
-
----
-
-###  Learnings & Highlights
-
-* Demonstrated full-stack skills in building an API-based blog CMS
-* Swapped GraphQL/WordPress with a scalable and modern REST-based backend
-* Built a fully responsive UI with interactive currency converter
+* Built a full-stack MERN app replacing a WordPress + Next.js setup
+* Showcased REST API skills over GraphQL for blog content delivery
+* Created responsive UI components for dynamic exchange rates and name reversal
+* Structured codebase into clear client and server repositories
 
 ---
 
-###  Contact
-> Developed by Akosile Olaide — \[[olaideakosile35@gmail.com](mailto:olaideakosile35@gmail.com)]
-> Target Role: **Software Developer**
-> Company: **Bema Integrated Services Ltd**
+## Contact
+
+Akosile Olaide
+[olaideakosile35@gmail.com](mailto:olaideakosile35@gmail.com)
+Target Role: Software Developer
+Company: Bema Integrated Services Ltd
+
+---
+
+**Feel free to explore:**
+
+* Frontend repo: [https://github.com/Agentpat/client](https://github.com/Agentpat/client)
+* Backend repo: [https://github.com/Agentpat/bema-skill-test](https://github.com/Agentpat/bema-skill-test)
+
+---
+
+If you want, I can help you create separate READMEs for each repo too. Just ask!
